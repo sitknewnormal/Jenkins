@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  cicd: 
+    image: sitk/jenkins2
+    container_name: sitk_jenkins2
+    user: root
+    ports:
+      - 8081:8080
+      - 50001:50000
+    volumes:
+      - jenkins-home-volume2:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+volumes:
+    jenkins-home-volume2:
+      driver: local
+      driver_opts:
+        type: none
+        device: c:\sitk\jenkins\jenkins_home2
+        o: bind
